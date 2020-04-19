@@ -30,8 +30,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/actuator", "/actuator/*").permitAll()
-                .anyRequest().authenticated();
-        
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginProcessingUrl("/login")
+                .usernameParameter("usename")
+                .passwordParameter("password")
+                .permitAll();
+                       
     }
 
     @Bean

@@ -1,22 +1,25 @@
 package io.opeleh.authenticationservices.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.Table;
+@Entity
+@Table(name="users", schema = "core")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long userid;
 
     private String username;
 
     private String password;
 
-    public User(long id, String username, String password) {
-        this.id = id;
-        this.username = username;
+    public User(long userID, String userName, String password) {
+        this.userid= userID;
+        this.username = userName;
         this.password = password;
     }
 
@@ -24,20 +27,20 @@ public class User {
         
     }
 
-    public long getId() {
-        return id;
+    public long getUserID() {
+        return userid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserID(long userID) {
+        this.userid = userID;
     }
 
-    public String getUsername() {
+    public String getUserName() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+       this.username = userName;
     }
 
     public String getPassword() {
@@ -50,7 +53,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", password=" + password + ", username=" + username + "]";
+        return "User [userID=" + userid + ", password=" + password + ", username=" + username + "]";
     }
 
 }
