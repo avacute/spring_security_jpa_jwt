@@ -13,15 +13,16 @@ public class UsersDetails implements UserDetails {
     private static final long serialVersionUID = 1L;
     private String username;
     private String password;
-    //private boolean isActive;
+    private boolean isEnabled;
     //private List <GrantedAuthority> authority;
 
     public UsersDetails() {
     }
 
     public UsersDetails(User user) {
-        this.username = user.getUserName();
+        this.username = user.getUsername();
         this.password = user.getPassword();
+        this.isEnabled = user.getIsEnabled();
     }
 
     @Override
@@ -56,7 +57,7 @@ public class UsersDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isEnabled;
     }
 
     
